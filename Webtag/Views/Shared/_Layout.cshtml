@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>WebTag</title>
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/css")
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="/" class="title pull-left">
+                <img src="~/images/logo.jpg" title="WebTag" />
+                <h3>My<span class="green-text">Web</span>Tag</h3>
+            </a>
+            <nav class="pull-right clearfix">
+                @Html.ActionLink("Login", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
+                @Html.ActionLink("About", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
