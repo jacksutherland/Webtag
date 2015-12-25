@@ -6,11 +6,9 @@ using System.Web.Mvc;
 
 namespace Webtag.Controllers
 {
+    [Authorize]
     public class DashboardController : BaseController
     {
-        //
-        // GET: /Dashboard/
-
         public ActionResult Index()
         {
             return View();

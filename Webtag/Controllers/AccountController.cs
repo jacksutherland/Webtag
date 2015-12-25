@@ -27,7 +27,7 @@ namespace Webtag.Controllers
             {
                 if ( WebSecurity.Login(model.Email.Trim().ToLower(), model.Password.Trim()))
                 {
-                    return RedirectToAction("/", "Home");
+                    return RedirectToAction("/", "Dashboard");
                 }
                 ModelState.AddModelError("ValidationSummary", "That email address and password combination does not exist.");
             }
@@ -40,7 +40,7 @@ namespace Webtag.Controllers
         public ActionResult LogOut()
         {
             WebSecurity.Logout();
-            return RedirectToAction("/", "Home");
+            return RedirectToAction("Login");
         }
 
         public ActionResult Register()

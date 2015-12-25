@@ -13,10 +13,16 @@ namespace Webtag.Controllers
     {
         private DataContext db = new DataContext();
 
-        [Authorize]
         public ActionResult Index()
         {
-            return View(WebSecurity.GetUserId("jacksutherl@gmail.com"));
+            if(WebSecurity.IsAuthenticated)
+            {
+                return RedirectToAction("/", "Dashboard");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ActionResult About()
