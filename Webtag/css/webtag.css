@@ -31,6 +31,12 @@ h2
     text-align:center;
 }
 
+.small-text
+{
+    font-size:smaller;
+    color:#777;
+}
+
 header
 {
     border-bottom: 1px solid #ccc;
@@ -63,13 +69,21 @@ header nav
     margin:2px 0 0 0;
 }
 
-header nav a 
+header nav *
 {
     padding:7px 5px 6px 5px;
     margin:0 0 0 15px;
     display:block;
     float:right;
     border-bottom:solid 3px #fff;
+}
+header nav form 
+{
+    padding:0;
+    margin:0 ;
+    display:inline;
+    float:none;
+    border-bottom:none;
 }
 
 header a:hover, header a.selected
@@ -87,6 +101,11 @@ header a:hover, header a.selected
     margin:20px 0 0 0;
 }
 
+.margin-top
+{
+    margin-top:15px;
+}
+
 .margin-left
 {
     margin-left:5px;
@@ -99,25 +118,15 @@ header a:hover, header a.selected
 
 input, textarea
 {
-    margin:0 0 15px 0;
+    margin:13px 0 2px 0;
     padding: 6px;
     border: 1px solid #e1e8ed;
     border-radius: 3px;
 }
 
-button, .button
+input.input-validation-error
 {
-    font-weight:bold;
-    color:#555;
-    padding:6px 12px;
-    background-color:#f5f5f5;
-    background-image: -linear-gradient(top,#f5f5f5,#f1f1f1);
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius:2px;
-}
-button:hover, .button:hover
-{
-    color:#111;
+    border-color:#953D24;
 }
 
 .field-validation-error
@@ -129,6 +138,21 @@ button:hover, .button:hover
 [data-valmsg-for="ValidationSummary"]
 {
     display:block;
-    margin:0 0 15px 0;
     text-align:center;
+}
+
+button, .button
+{
+    font-weight:bold;
+    color:#555;
+    padding:6px 12px;
+    margin:13px 0 0 0;
+    background-color:#f5f5f5;
+    background-image: -linear-gradient(top,#f5f5f5,#f1f1f1);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius:2px;
+}
+button:hover, .button:hover
+{
+    color:#111;
 }

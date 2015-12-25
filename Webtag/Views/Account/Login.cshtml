@@ -2,17 +2,24 @@
 @model LoginVM
 
 <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
         <div class="box">
             <h2 class="text-center">Log in to My<span class="green-text">Web</span>Tag</h2>
-            @using(Html.BeginForm())
+            @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationMessage("ValidationSummary")
+                
                 @Html.TextBoxFor(m => m.Email, new { @class = "full-width", placeholder = "Enter your email address" })
-                @Html.TextBoxFor(m => m.Password, new { @class = "full-width", placeholder = "Enter your password" })
-                <button>Log in</button> 
-                <span class="margin-left">OR @Html.ActionLink("Sign up now!", "Register")</span>
+                @Html.ValidationMessageFor(m => m.Email)
+                
+                @Html.PasswordFor(m => m.Password, new { @class = "full-width", placeholder = "Enter your password" })
+                @Html.ValidationMessageFor(m => m.Password)
+
+                <div>
+                    <button>Log in</button>
+                    <span class="margin-left">OR @Html.ActionLink("Sign up now!", "Register")</span>
+                </div>
             }
         </div>
     </div>

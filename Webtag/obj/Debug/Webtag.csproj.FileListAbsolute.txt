@@ -30,3 +30,14 @@ C:\Dev\Webtag\Webtag\bin\System.Web.WebPages.Razor.xml
 C:\Dev\Webtag\Webtag\obj\Debug\Webtag.csprojResolveAssemblyReference.cache
 C:\Dev\Webtag\Webtag\obj\Debug\Webtag.dll
 C:\Dev\Webtag\Webtag\obj\Debug\Webtag.pdb
+C:\Dev\Webtag\Webtag\bin\WebMatrix.Data.dll
+C:\Dev\Webtag\Webtag\bin\WebMatrix.WebData.dll
+C:\Dev\Webtag\Webtag\bin\WebMatrix.Data.xml
+C:\Dev\Webtag\Webtag\bin\WebMatrix.WebData.xml
+C:\Dev\Webtag\Webtag\obj\Debug\Webtag.Migrations.InitialCreate.resources
+C:\Dev\Webtag\Webtag\obj\Debug\Webtag.csproj.GenerateResource.Cache
+C:\Dev\Webtag\Webtag\bin\Postal.dll
+C:\Dev\Webtag\Webtag\bin\RazorEngine.dll
+C:\Dev\Webtag\Webtag\bin\Postal.xml
+C:\Dev\Webtag\Webtag\bin\RazorEngine.pdb
+C:\Dev\Webtag\Webtag\bin\RazorEngine.xml

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using WebMatrix.WebData;
 using Webtag.Models;
 
 namespace Webtag.Controllers
@@ -10,6 +11,11 @@ namespace Webtag.Controllers
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             ViewBag.NavSelected = NavSelected;
+            if(WebSecurity.IsAuthenticated)
+            {
+                ViewBag.UserName = WebSecurity.CurrentUserName;
+            }
+
             base.OnActionExecuted(filterContext);
         }
     }

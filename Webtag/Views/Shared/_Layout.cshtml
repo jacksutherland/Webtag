@@ -17,8 +17,23 @@
                 <h3>My<span class="green-text">Web</span>Tag</h3>
             </a>
             <nav class="pull-right clearfix">
-                @Html.ActionLink("Login", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
+                @if (Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Log in", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
+                }
                 @Html.ActionLink("About", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
+                @if (Request.IsAuthenticated)
+                {
+                    <span>@ViewBag.UserName</span>
+                }
             </nav>
         </div>
     </header>

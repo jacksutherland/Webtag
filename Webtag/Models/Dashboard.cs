@@ -6,9 +6,9 @@ namespace Webtag.Models
     {
         public int Id { get; set; }
 
-        [ForeignKey("UserProfile")]
-        public int UserProfileId { get; set; }
-        public virtual UserProfile UserProfile { get; set; }
+        //[ForeignKey("UserProfile")]
+        //public int UserProfileId { get; set; }
+        //public virtual UserProfile UserProfile { get; set; }
 
         public string Name { get; set; }
         public int Order { get; set; }

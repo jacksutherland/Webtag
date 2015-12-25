@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Webtag.Models
 {
+    [Table("UserProfile")]
     public class UserProfile
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Username { get; set; }
-        public DateTime DateCreated { get; set; }
-        public bool Active { get; set; }
+        [KeyAttribute]
+        public int UserId { get; set; }
+
+        public string UserName { get; set; }
     }
 }

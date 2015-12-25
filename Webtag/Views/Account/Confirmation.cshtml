@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+        <div class="box">
+            
+                @if (ViewBag.Confirmed == true)
+                {
+                    <h2 class="text-center">
+                        Congratulations! You have successfully registered for My<span class="green-text">Web</span>Tag
+                    </h2>
+                    @Html.ActionLink("Click here to login", "Login", null, new { @class = "button" })
+                }
+                else
+                {
+                    <h2 class="text-center">
+                        Sorry, but there was an error registering your My<span class="green-text">Web</span>Tag account
+                    </h2>
+                }
+        </div>
+    </div>
+</div>

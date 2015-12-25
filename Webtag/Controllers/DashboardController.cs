@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Webtag.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         //
         // GET: /Dashboard/
