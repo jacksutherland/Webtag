@@ -9,12 +9,13 @@ namespace Webtag
         public static void RegisterBundles(BundleCollection bundles)
         {
             // *.min.* files will not load locally
+            BundleTable.EnableOptimizations = true;
 
-            bundles.Add(new ScriptBundle("~/js").Include(
+            bundles.Add(new ScriptBundle("~/js/webtag").Include(
                         "~/js/jquery-{version}.js",
                         "~/js/webtag.js"));
 
-            bundles.Add(new StyleBundle("~/css").Include(
+            bundles.Add(new StyleBundle("~/css/webtag").Include(
                         "~/css/bootstrap.css", // custom: only includes bootstrap grid and responsive utilities
                         "~/css/webtag.css"));
         }

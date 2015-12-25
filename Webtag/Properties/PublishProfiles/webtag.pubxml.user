@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAX67i7l4SxkOVCrax/RQ7xgAAAAACAAAAAAAQZgAAAAEAACAAAAAqbFnnAXtD2I/IkMFq7wt2+yTacEqt6razSzt/uMFmqQAAAAAOgAAAAAIAACAAAAD47nhJ8Cu4DABryrJq9xQW7yXYdW3MUv+n8moowdIcnhAAAADBLcIv9chU6wsZ4uVCDlZNQAAAAKDBJ10g6qWAT9cyv+txc/DBGNapWvQ+gEikJ+jyBwTv8UDowtQCWsulY9PvYeUOnyKdRp0PoLvv/6uUSR8jr5s=</EncryptedPassword>
+    <_PublishTargetUrl>ftp://www.mywebtag.com</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>12/19/2015 12:43:47</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>12/19/2015 12:43:49</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/19/2015 12:43:49</publishTime>
+    </File>
+    <File Include="bin/Postal.dll">
+      <publishTime>12/24/2015 17:19:56</publishTime>
+    </File>
+    <File Include="bin/RazorEngine.dll">
+      <publishTime>12/24/2015 17:19:56</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>12/19/2015 12:43:49</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.Providers.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>12/19/2015 12:43:49</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>12/19/2015 12:43:49</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>12/19/2015 12:43:49</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>12/19/2015 12:43:49</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>12/19/2015 12:43:50</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.Data.dll">
+      <publishTime>07/09/2013 12:05:10</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.WebData.dll">
+      <publishTime>07/09/2013 12:05:12</publishTime>
+    </File>
+    <File Include="bin/Webtag.dll">
+      <publishTime>12/24/2015 22:17:27</publishTime>
+    </File>
+    <File Include="css/bootstrap.css">
+      <publishTime>12/19/2015 14:14:27</publishTime>
+    </File>
+    <File Include="css/bootstrap.min.css">
+      <publishTime>12/19/2015 14:14:27</publishTime>
+    </File>
+    <File Include="css/webtag.css">
+      <publishTime>12/24/2015 16:55:42</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>12/19/2015 12:43:46</publishTime>
+    </File>
+    <File Include="images/favicon.ico">
+      <publishTime>12/19/2015 14:26:09</publishTime>
+    </File>
+    <File Include="images/logo.jpg">
+      <publishTime>12/19/2015 14:26:02</publishTime>
+    </File>
+    <File Include="js/jquery-2.1.4.js">
+      <publishTime>12/19/2015 13:47:06</publishTime>
+    </File>
+    <File Include="js/webtag.js">
+      <publishTime>12/19/2015 14:20:16</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/24/2015 17:19:57</publishTime>
+    </File>
+    <File Include="Views/Account/CheckEmail.cshtml">
+      <publishTime>12/24/2015 17:35:39</publishTime>
+    </File>
+    <File Include="Views/Account/Confirmation.cshtml">
+      <publishTime>12/24/2015 17:33:09</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>12/24/2015 16:56:55</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>12/24/2015 17:12:58</publishTime>
+    </File>
+    <File Include="Views/Emails/RegistrationConfirmation.cshtml">
+      <publishTime>12/24/2015 22:05:46</publishTime>
+    </File>
+    <File Include="Views/Emails/Web.config">
+      <publishTime>12/24/2015 17:19:57</publishTime>
+    </File>
+    <File Include="Views/Emails/_ViewStart.cshtml">
+      <publishTime>12/24/2015 17:19:57</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>12/19/2015 15:23:14</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>12/21/2015 10:34:53</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>12/19/2015 12:43:46</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>12/21/2015 10:53:30</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>12/19/2015 12:43:46</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>12/19/2015 12:43:46</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/24/2015 22:17:29</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
