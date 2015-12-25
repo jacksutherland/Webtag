@@ -58,19 +58,27 @@ namespace Webtag.Controllers
             if (!string.IsNullOrEmpty(model.ConfirmPassword))
                 model.ConfirmPassword = model.ConfirmPassword.Trim();
 
-            if(model.Password != model.ConfirmPassword)
+            if(model.Password.Count() < 6)
+            {
+                ModelState.AddModelError("Password", "Password must be at least 6 characters");
+            }
+            else if(model.Password != model.ConfirmPassword)
             {
                 ModelState.AddModelError("ConfirmPassword", "Password and password confirmation do not match");
             }
 
             if(ModelState.IsValid)
             {
-                string confirmationToken = WebSecurity.CreateUserAndAccount(model.Email, model.Password, new { UserName = model.Email }, true);
-                dynamic email = new Email("RegistrationConfirmation");
-                email.To = model.Email;
-                email.ConfirmationToken = confirmationToken;
-                email.Send();
-                return RedirectToAction("CheckEmail", new { email = model.Email });
+                // TODO: Make email confirmation work
+                //string confirmationToken = WebSecurity.CreateUserAndAccount(model.Email, model.Password, new { UserName = model.Email }, true);
+                //dynamic email = new Email("RegistrationConfirmation");
+                //email.To = model.Email;
+                //email.ConfirmationToken = confirmationToken;
+                //email.Send();
+                //return RedirectToAction("CheckEmail", new { email = model.Email });
+
+                WebSecurity.CreateUserAndAccount(model.Email, model.Password);
+                return RedirectToAction("Confirmation", new { id = "Qaq9oP5z94hArb0GRpbLBiCe0Acj1O06" });
             }
 
             return View(model);
@@ -83,7 +91,8 @@ namespace Webtag.Controllers
 
         public ActionResult Confirmation(string id)
         {
-            if (WebSecurity.ConfirmAccount(id))
+            // first param is a key to bypass email
+            if (id == "Qaq9oP5z94hArb0GRpbLBiCe0Acj1O06" || WebSecurity.ConfirmAccount(id))
             {
                 ViewBag.Confirmed = true;
             }
