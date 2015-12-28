@@ -17,6 +17,7 @@ namespace Webtag
 
             bundles.Add(new StyleBundle("~/css/webtag").Include(
                         "~/css/bootstrap.css", // custom: only includes bootstrap grid and responsive utilities
+                        "~/css/font-awesome.css",
                         "~/css/webtag.css"));
         }
     }

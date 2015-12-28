@@ -13,18 +13,24 @@ h1, h2, h3, h4, h5, h6
 h2 
 {
     font-size:18px;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 ul
 {
+    margin:0;
     padding:0;
     list-style:none;
 }
 
 ul li
 {
-    margin:0 0 5px 0;
+    margin:5px 0 0 0;
+}
+
+ul li ul
+{
+    /*margin-left:20px;*/
 }
 
 .bold
@@ -46,6 +52,16 @@ ul li
 {
     font-size:smaller;
     color:#777;
+}
+
+.strike-through
+{
+    text-decoration:line-through;
+}
+
+.display-none
+{
+    display:none;
 }
 
 header
@@ -117,6 +133,11 @@ header a:hover, header a.selected
     margin-top:15px;
 }
 
+.margin-bottom
+{
+    margin-bottom:15px;
+}
+
 .margin-left
 {
     margin-left:5px;
@@ -163,7 +184,74 @@ button, .button
     border: 1px solid rgba(0,0,0,0.1);
     border-radius:2px;
 }
+
 button:hover, .button:hover
 {
     color:#111;
+}
+
+button.fa,
+.button.fa
+{
+    color:#6C7ABD;
+    font-weight:normal;
+    padding:0;
+    margin:0;
+    background:transparent;
+    border: none;
+    font-size:16px;
+    opacity:.35;
+}
+
+button.fa:hover,
+.button.fa:hover
+{
+    opacity:1;
+}
+
+ul.links li .link,
+ul.links li .folder
+{
+    border-radius:3px;
+}
+
+ul.links li .folder ul.links li .link
+{
+    margin:0 0 0 20px;
+}
+
+ul.links li .folder ul.links
+{
+    display:none;
+}
+
+ul.links li a
+{
+    display:block;
+    width:92%;
+    text-decoration:none;
+}
+
+ul.links li > .link a > img
+{
+    width:15px;
+}
+
+ul.links li > .link a > img,
+ul.links li > .link a > .fa,
+ul.links li > .folder a > .fa
+{
+    margin-right:5px;
+}
+
+ul.links li
+{
+    position:relative;
+}
+
+ul.links li > .link-buttons
+{
+    position:absolute;
+    right:0;
+    top:1px;
 }

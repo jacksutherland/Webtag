@@ -1,0 +1,30 @@
+﻿@using Webtag.Models
+@model List<LinkVM>
+
+<ul class="links">
+    @foreach (LinkVM link in Model)
+    {
+        <li class="clearfix">
+            @if (link.Link != null)
+            {
+                <div class="link">
+                    <a href="@link.Link.Href" target="_blank">
+                        <i class="fa fa-link"></i>
+                        @link.Link.Text
+                    </a>
+                </div>
+            }
+            else if (link.LinkFolder != null)
+            {
+                <div class="folder">
+                    <a href="/"><i class="fa fa-folder"></i>@link.LinkFolder.Text</a>
+                    @Html.Partial("_Links", link.Links)
+                </div>
+            }
+            <div class="link-buttons">
+                <button class="fa fa-pencil-square"></button>
+                <button class="fa fa-times-circle delete-button"></button>
+            </div>
+        </li>
+    }
+</ul>

@@ -1,12 +1,30 @@
-﻿<div class="row">
+﻿@using Webtag.Models
+@model DashboardVM
+
+@section scripts {
+    <script type="text/javascript">
+        $(function ()
+        {
+            new Dashboard();
+        });
+    </script>
+}
+
+<div class="row">
     <div class="col-xs-12 col-sm-6">
         <div class="box">
-            <h2 class="text-center">Favorites</h2>
-            <ul class="links">
-                <li><a href="http://www.google.com" target="_blank">My favorite link 1</a></li>
-                <li><a href="http://www.panthers.com" target="_blank">t vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</a></li>
-                <li><a href="http://www.nfl.com" target="_blank">My favorite link 2</a></li>
-            </ul>
+            <div class="clearfix">
+                <h2 class="pull-left">Links</h2>
+                <button class="pull-right fa fa-plus-square add-link"></button>
+            </div>
+            <div id="link-inputs" class="margin-bottom display-none">
+                <input id="link-title" type="text" placeholder="Link title" class="full-width" />
+                <input id="link-url" type="text" placeholder="Link url" class="full-width" />
+                <span id="link-url-validation" class="field-validation-error display-none" data-valmsg-for="Email" data-valmsg-replace="true">Url format must match http://www.myurl.com</span>
+                <button id="save-link-button">Save</button>
+                <button id="cancel-link-button">Cancel</button>
+            </div>
+            @Html.Partial("_Links", Model.Links)
         </div>
     </div>
     <div class="col-xs-12 col-sm-6">
