@@ -1,5 +1,13 @@
 ﻿
-var Dashboard = function (addLinkUrl, addFolderUrl, delLinkUrl, delFolderUrl, sortUrl)
+$(function ()
+{
+    $("header .fa-bars").click(function ()
+    {
+        $("#mobile-nav").slideToggle();
+    });
+});
+
+var Dashboard = function (saveLinkUrl, saveFolderUrl, delLinkUrl, delFolderUrl, sortUrl)
 {
     var reordering = false;
     var orderingInited = false;
@@ -8,14 +16,14 @@ var Dashboard = function (addLinkUrl, addFolderUrl, delLinkUrl, delFolderUrl, so
     {
         if ($("#link-inputs").is(":visible"))
         {
-            $("#link-inputs input[type='text']").val("").removeClass("input-validation-error");
+            $("#link-inputs input[type='text']").removeClass("input-validation-error");
             $("#link-inputs").slideUp();
             $("#link-url-validation").hide();
         }
 
         if ($("#folder-inputs").is(":visible"))
         {
-            $("#folder-inputs input[type='text']").val("").removeClass("input-validation-error");
+            $("#folder-inputs input[type='text']").removeClass("input-validation-error");
             $("#folder-inputs").slideUp();
         }
     }
@@ -48,11 +56,10 @@ var Dashboard = function (addLinkUrl, addFolderUrl, delLinkUrl, delFolderUrl, so
 
         if(valid)
         {
-            $.post(addLinkUrl, { title: $("#link-title").val(), href: $("#link-url").val() }, function (data)
+            $.post(saveLinkUrl, { title: $("#link-title").val(), href: $("#link-url").val(), id: $("#link-id").val() }, function (data)
             {
-                $("#link-list").html(data);
+                updateLinkList(data);
                 closeInputs();
-                updateLinks();
             });
         }
     }
@@ -69,11 +76,10 @@ var Dashboard = function (addLinkUrl, addFolderUrl, delLinkUrl, delFolderUrl, so
 
         if (valid)
         {
-            $.post(addFolderUrl, { name: $("#folder-name").val() }, function (data)
+            $.post(saveFolderUrl, { name: $("#folder-name").val(), id: $("#folder-id").val() }, function (data)
             {
-                $("#link-list").html(data);
+                updateLinkList(data);
                 closeInputs();
-                updateLinks();
             });
         }
     }
@@ -104,6 +110,19 @@ var Dashboard = function (addLinkUrl, addFolderUrl, delLinkUrl, delFolderUrl, so
                 });
             }
 
+            node.next(".link-buttons").find(".edit-button").click(function ()
+            {
+                var btn = $(this);
+                if(btn.data("folder") == true)
+                {
+                    showFolderForm(btn.data("id"), btn.data("name"));
+                }
+                else
+                {
+                    showLinkForm(btn.data("id"), btn.data("name"), btn.data("url"));
+                }
+            });
+
             node.next(".link-buttons").find(".delete-button").hover(
                 function ()
                 {
@@ -123,12 +142,18 @@ var Dashboard = function (addLinkUrl, addFolderUrl, delLinkUrl, delFolderUrl, so
                     var delUrl = isFolder ? delFolderUrl : delLinkUrl;
                     $.post(delUrl, { id: btn.data("id") }, function (data)
                     {
-                        $("#link-list").html(data);
-                        updateLinks();
+                        updateLinkList(data);
                     });
                 }
             });
         });
+    }
+
+    function updateLinkList(linkHtml)
+    {
+        $("#link-list").html(linkHtml);
+        orderingInited = false;
+        updateLinks();
     }
 
     function startOrdering()
@@ -177,26 +202,58 @@ var Dashboard = function (addLinkUrl, addFolderUrl, delLinkUrl, delFolderUrl, so
         }
     }
 
-    $(".add-link").click(function()
-    {
-        stopOrdering();
-        if ($("#folder-inputs").is(":visible"))
-        {
-            $("#folder-inputs").slideUp();
-        }
-        $("#link-inputs").slideToggle();
-        $("#link-title").focus();
-    });
-
-    $(".add-folder").click(function ()
+    function showFolderForm(folderId, folderName)
     {
         stopOrdering();
         if ($("#link-inputs").is(":visible"))
         {
             $("#link-inputs").slideUp();
         }
-        $("#folder-inputs").slideToggle();
-        $("#folder-name").focus();        
+        if (typeof (folderId) == "undefined")
+        {
+            $("#folder-id").val("");
+            $("#folder-name").val("");
+        }
+        else
+        {
+            $("#folder-id").val(folderId);
+            $("#folder-name").val(folderName);
+        }
+        $("#folder-inputs").slideDown();
+        $("#folder-name").focus();
+    }
+
+    function showLinkForm(linkId, linkTitle, linkUrl)
+    {
+        stopOrdering();
+        if ($("#folder-inputs").is(":visible"))
+        {
+            $("#folder-inputs").slideUp();
+        }
+        if (typeof (linkId) == "undefined")
+        {
+            $("#link-id").val("");
+            $("#link-title").val("");
+            $("#link-url").val("");
+        }
+        else
+        {
+            $("#link-id").val(linkId);
+            $("#link-title").val(linkTitle);
+            $("#link-url").val(linkUrl);
+        }
+        $("#link-inputs").slideDown();
+        $("#link-title").focus();
+    }
+
+    $(".add-link").click(function()
+    {
+        showLinkForm();
+    });
+
+    $(".add-folder").click(function ()
+    {
+        showFolderForm();       
     });
 
     $("#link-inputs input[type='text']").keyup(function (e)

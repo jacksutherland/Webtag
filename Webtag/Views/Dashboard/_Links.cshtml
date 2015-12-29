@@ -4,32 +4,35 @@
 <ul class="links">
     @foreach (LinkVM link in Model)
     {
+        string isFolder;
         <li id="link_@link.LinkId" class="clearfix@(link.IsParent ? " folder-li" : "")">
             <i class="fa fa-bars pull-left order-handle"></i>
             @if (link.IsParent)
             {
+                isFolder = "true";
                 <div class="folder">
                     <a href="/"><i class="fa fa-folder"></i>&nbsp;&nbsp;@link.Title</a>
                     @Html.Partial("_Links", link.ChildLinks)
                 </div>
-                <div class="link-buttons">
-                    <button class="fa fa-pencil-square"></button>
-                    <button class="fa fa-times-circle delete-button" data-id="@link.LinkId" data-folder="true"></button>
-                </div>
             }
             else
             {
+                isFolder = "false";
                 <div class="link">
                     <a href="@link.Href" target="_blank">
                         <i class="fa fa-link"></i>
                         @link.Title
                     </a>
                 </div>
-                <div class="link-buttons">
-                    <button class="fa fa-pencil-square"></button>
-                    <button class="fa fa-times-circle delete-button" data-id="@link.LinkId" data-folder="false"></button>
-                </div>
             }
+            <div class="link-buttons">
+                <button class="fa fa-pencil-square edit-button"
+                        data-id="@link.LinkId"
+                        data-name="@link.Title"
+                        data-url="@link.Href"
+                        data-folder="@isFolder"></button>
+                <button class="fa fa-times-circle delete-button" data-id="@link.LinkId" data-folder="@isFolder"></button>
+            </div>
         </li>
     }
 </ul>

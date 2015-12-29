@@ -16,6 +16,8 @@ h2
     margin-bottom:10px;
 }
 
+a, button { outline:none !important; }
+
 ul
 {
     margin:0;
@@ -26,11 +28,6 @@ ul
 ul li
 {
     margin:5px 0 0 0;
-}
-
-ul li ul
-{
-    /*margin-left:20px;*/
 }
 
 ul.ui-sortable:not(.ui-sortable-disabled) li.ui-sortable-handle
@@ -124,6 +121,29 @@ header a:hover, header a.selected
     border-bottom:solid 3px #79AB44;
 }
 
+header .fa-bars
+{
+    margin:7px 0 0 0 !important;
+    font-size:24px !important;
+}
+
+header #mobile-nav
+{
+    padding-bottom:5px;
+}
+
+header #mobile-nav li
+{
+    border-top:solid 1px #e1e8ed;
+    padding:10px 0 5px 0;
+}
+
+header #mobile-nav li a
+{
+    display:block;
+    border:none !important;
+}
+
 .box
 {
     border:solid 1px #e1e8ed;
@@ -136,6 +156,11 @@ header a:hover, header a.selected
 .margin-top
 {
     margin-top:15px;
+}
+
+.margin-top5
+{
+    margin-top:5px !important;
 }
 
 .margin-bottom
@@ -269,7 +294,7 @@ ul.links.ui-sortable:not(.ui-sortable-disabled) li.folder-li ul.links.ui-sortabl
 
 ul.links li a
 {
-    display:block;
+    /*display:block;*/
     width:90%;
     text-decoration:none;
 }

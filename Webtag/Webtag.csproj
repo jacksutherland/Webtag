@@ -170,7 +170,7 @@
     <Content Include="css\font-awesome.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
-    <Content Include="images\favicon.ico" />
+    <Content Include="favicon.ico" />
     <Content Include="images\logo.jpg" />
     <Content Include="js\jquery-2.1.4.js" />
     <Content Include="js\jquery-ui.js" />

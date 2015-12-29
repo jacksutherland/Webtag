@@ -58,35 +58,58 @@ namespace Webtag.Controllers
             return View(model);
         }
 
-        public string AddLink(string title, string href)
+        public string SaveLink(string title, string href, int? id = null)
         {
             if(!string.IsNullOrWhiteSpace(title) && !string.IsNullOrWhiteSpace(href))
             {
-                db.Links.Add(new Link()
+                if (id.HasValue)
                 {
-                    Order = GetNewLinkOrder(),
-                    Href = href,
-                    Text = title,
-                    UserProfileId = WebSecurity.CurrentUserId,
-                    IsParent = false
-                });
+                    Link link = db.Links.FirstOrDefault(l => l.Id == id);
+                    if(link != null)
+                    {
+                        link.Text = title;
+                        link.Href = href;
+                    }
+                }
+                else
+                {
+                    db.Links.Add(new Link()
+                    {
+                        Order = GetNewLinkOrder(),
+                        Href = href,
+                        Text = title,
+                        UserProfileId = WebSecurity.CurrentUserId,
+                        IsParent = false
+                    });
+                }
                 db.SaveChanges();
             }
 
             return SerializePartial("_Links", GetLinksVM());
         }
 
-        public string AddFolder(string name)
+        public string SaveFolder(string name, int? id = null)
         {
             if (!string.IsNullOrWhiteSpace(name))
             {
-                db.Links.Add(new Link()
+                if (id.HasValue)
                 {
-                    Order = GetNewLinkOrder(),
-                    Text = name,
-                    UserProfileId = WebSecurity.CurrentUserId,
-                    IsParent = true
-                });
+                    Link link = db.Links.FirstOrDefault(l => l.Id == id);
+                    if (link != null)
+                    {
+                        link.Text = name;
+                    }
+                }
+                else
+                {
+                    db.Links.Add(new Link()
+                    {
+                        Order = GetNewLinkOrder(),
+                        Text = name,
+                        UserProfileId = WebSecurity.CurrentUserId,
+                        IsParent = true
+                    });
+                }
                 db.SaveChanges();
             }
 

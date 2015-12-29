@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>WebTag</title>
-    <link rel="icon" href="/images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="/favicon.ico" type="image/ico" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
     @Styles.Render("~/css/webtag")
 </head>
@@ -12,29 +12,60 @@
 
     <header>
         <div class="container">
-            <a href="/" class="title pull-left">
-                <img src="~/images/logo.jpg" title="WebTag" />
-                <h3>My<span class="green-text">Web</span>Tag</h3>
-            </a>
-            <nav class="pull-right clearfix">
-                @if (Request.IsAuthenticated)
-                {
-                    using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            <div class="clearfix">
+                <a href="/" class="title pull-left">
+                    <img src="~/images/logo.jpg" title="WebTag" />
+                    <h3>My<span class="green-text">Web</span>Tag</h3>
+                </a>
+                <nav class="pull-right clearfix hidden-xs">
+                    @if (Request.IsAuthenticated)
                     {
-                        @Html.AntiForgeryToken()
-                        <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                        using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                        }
                     }
-                }
-                else
-                {
-                    @Html.ActionLink("Log in", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
-                }
-                @Html.ActionLink("About", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
-                @if (Request.IsAuthenticated)
-                {
-                    <span>@ViewBag.UserName</span>
-                }
-            </nav>
+                    else
+                    {
+                        @Html.ActionLink("Log in", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
+                    }
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span>@ViewBag.UserName</span>
+                    }
+                </nav>
+                <button class="fa fa-bars pull-right margin-top visible-xs"></button>
+            </div>
+            <ul id="mobile-nav" class="display-none">
+                <li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span>Welcome @ViewBag.UserName</span>
+                    }
+                </li>
+                <li>
+                    @Html.ActionLink("Dashboard", "/", "Home", "Dashboard")
+                </li>
+                <li>
+                    @Html.ActionLink("About", "About", "Home")
+                </li>
+                <li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                        }
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Log in", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
+                    }
+                </li>
+            </ul>
         </div>
     </header>
 

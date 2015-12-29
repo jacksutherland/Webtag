@@ -5,7 +5,7 @@
     <script type="text/javascript">
     $(function ()
     {
-        new Dashboard("@Url.Action("AddLink")", "@Url.Action("AddFolder")", "@Url.Action("DeleteLink")", "@Url.Action("DeleteFolder")", "@Url.Action("SortLinks")");
+        new Dashboard("@Url.Action("SaveLink")", "@Url.Action("SaveFolder")", "@Url.Action("DeleteLink")", "@Url.Action("DeleteFolder")", "@Url.Action("SortLinks")");
     });
     </script>
 }
@@ -13,13 +13,24 @@
 <div class="row">
     <div class="col-xs-12 col-sm-6">
         <div class="box">
+
             <div class="clearfix">
                 <h2 class="pull-left">Links</h2>
-                <button class="pull-right fa fa-folder add-folder margin-left"><span>New folder</span></button>
-                <button class="pull-right fa fa-link add-link margin-left"><span>New link</span></button>
-                <button class="pull-right fa fa-sort-amount-asc reorder-links"><span>Reorder</span></button>
+                <button class="pull-right fa fa-folder add-folder margin-top5"><span>New folder</span></button>
+                <button class="pull-right fa fa-link add-link margin-top5"><span>New link</span></button>
+                <button class="pull-right fa fa-sort-amount-asc reorder-links margin-top5 hidden-xs"><span>Reorder</span></button>
             </div>
+            @*<div class="visible-xs clearfix">
+                <h2>Links</h2>
+                <div class="clearfix margin-bottom">
+                    <button class="pull-left fa fa-folder add-folder margin-left"><span>New folder</span></button>
+                    <button class="pull-left fa fa-link add-link margin-left"><span>New link</span></button>
+                    <button class="pull-left fa fa-sort-amount-asc reorder-links"><span>Reorder</span></button>
+                </div>
+            </div>*@
+            
             <div id="link-inputs" class="margin-bottom display-none">
+                <input id="link-id" type="hidden" />
                 <input id="link-title" type="text" placeholder="Link title" class="full-width" />
                 <input id="link-url" type="text" placeholder="Link url" class="full-width" />
                 <div>
@@ -29,13 +40,16 @@
                 <button id="cancel-link-button">Cancel</button>
             </div>
             <div id="folder-inputs" class="margin-bottom display-none">
+                <input id="folder-id" type="hidden" />
                 <input id="folder-name" type="text" placeholder="Folder name" class="full-width" />
                 <button id="save-folder-button">Save</button>
                 <button id="cancel-folder-button">Cancel</button>
             </div>
+
             <div id="link-list">
                 @Html.Partial("_Links", Model.Links)
             </div>
+
         </div>
     </div>
     <div class="col-xs-12 col-sm-6">
