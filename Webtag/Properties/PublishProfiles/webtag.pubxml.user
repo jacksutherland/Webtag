@@ -71,7 +71,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/09/2013 12:05:12</publishTime>
     </File>
     <File Include="bin/Webtag.dll">
-      <publishTime>12/24/2015 22:32:45</publishTime>
+      <publishTime>12/28/2015 21:18:23</publishTime>
     </File>
     <File Include="css/bootstrap.css">
       <publishTime>12/19/2015 14:14:27</publishTime>
@@ -80,7 +80,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/19/2015 14:14:27</publishTime>
     </File>
     <File Include="css/webtag.css">
-      <publishTime>12/24/2015 16:55:42</publishTime>
+      <publishTime>12/28/2015 21:05:54</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>12/19/2015 12:43:46</publishTime>
@@ -94,8 +94,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="js/jquery-2.1.4.js">
       <publishTime>12/19/2015 13:47:06</publishTime>
     </File>
+    <File Include="js/jquery-ui.js">
+      <publishTime>12/28/2015 15:57:59</publishTime>
+    </File>
+    <File Include="js/jquery-ui.min.js">
+      <publishTime>12/28/2015 15:57:59</publishTime>
+    </File>
     <File Include="js/webtag.js">
-      <publishTime>12/19/2015 14:20:16</publishTime>
+      <publishTime>12/28/2015 21:11:39</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>12/24/2015 17:19:57</publishTime>
@@ -104,13 +110,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/24/2015 17:35:39</publishTime>
     </File>
     <File Include="Views/Account/Confirmation.cshtml">
-      <publishTime>12/24/2015 17:33:09</publishTime>
+      <publishTime>12/24/2015 22:48:33</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>12/24/2015 16:56:55</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>12/24/2015 17:12:58</publishTime>
+    </File>
+    <File Include="Views/Dashboard/Index.cshtml">
+      <publishTime>12/28/2015 18:33:46</publishTime>
+    </File>
+    <File Include="Views/Dashboard/_Links.cshtml">
+      <publishTime>12/28/2015 21:01:56</publishTime>
     </File>
     <File Include="Views/Emails/RegistrationConfirmation.cshtml">
       <publishTime>12/24/2015 22:05:46</publishTime>
