@@ -13,6 +13,7 @@ namespace Webtag
 
             bundles.Add(new ScriptBundle("~/js/webtag").Include(
                         "~/js/jquery-{version}.js",
+                        "~/js/jquery-ui.js", // custom: only includes sortables, draggables and droppables
                         "~/js/webtag.js"));
 
             bundles.Add(new StyleBundle("~/css/webtag").Include(

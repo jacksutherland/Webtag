@@ -18,6 +18,5 @@ namespace Webtag.DataAccess
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Dashboard> Dashboards { get; set; }
         public DbSet<Link> Links { get; set; }
-        public DbSet<LinkFolder> LinkFolders { get; set; }
     }
 }

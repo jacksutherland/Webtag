@@ -11,7 +11,7 @@ namespace Webtag.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512280013073_AddLinks"; }
+            get { return "201512281948418_AddLinks"; }
         }
         
         string IMigrationMetadata.Source

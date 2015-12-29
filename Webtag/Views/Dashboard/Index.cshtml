@@ -3,10 +3,10 @@
 
 @section scripts {
     <script type="text/javascript">
-        $(function ()
-        {
-            new Dashboard();
-        });
+    $(function ()
+    {
+        new Dashboard("@Url.Action("AddLink")", "@Url.Action("AddFolder")", "@Url.Action("DeleteLink")", "@Url.Action("DeleteFolder")", "@Url.Action("SortLinks")");
+    });
     </script>
 }
 
@@ -15,16 +15,27 @@
         <div class="box">
             <div class="clearfix">
                 <h2 class="pull-left">Links</h2>
-                <button class="pull-right fa fa-plus-square add-link"></button>
+                <button class="pull-right fa fa-folder add-folder margin-left"><span>New folder</span></button>
+                <button class="pull-right fa fa-link add-link margin-left"><span>New link</span></button>
+                <button class="pull-right fa fa-sort-amount-asc reorder-links"><span>Reorder</span></button>
             </div>
             <div id="link-inputs" class="margin-bottom display-none">
                 <input id="link-title" type="text" placeholder="Link title" class="full-width" />
                 <input id="link-url" type="text" placeholder="Link url" class="full-width" />
-                <span id="link-url-validation" class="field-validation-error display-none" data-valmsg-for="Email" data-valmsg-replace="true">Url format must match http://www.myurl.com</span>
+                <div>
+                    <span id="link-url-validation" class="field-validation-error display-none" data-valmsg-for="Email" data-valmsg-replace="true">Url format must match http://www.myurl.com</span>
+                </div>
                 <button id="save-link-button">Save</button>
                 <button id="cancel-link-button">Cancel</button>
             </div>
-            @Html.Partial("_Links", Model.Links)
+            <div id="folder-inputs" class="margin-bottom display-none">
+                <input id="folder-name" type="text" placeholder="Folder name" class="full-width" />
+                <button id="save-folder-button">Save</button>
+                <button id="cancel-folder-button">Cancel</button>
+            </div>
+            <div id="link-list">
+                @Html.Partial("_Links", Model.Links)
+            </div>
         </div>
     </div>
     <div class="col-xs-12 col-sm-6">

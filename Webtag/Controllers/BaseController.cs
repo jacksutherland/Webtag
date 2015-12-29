@@ -18,5 +18,21 @@ namespace Webtag.Controllers
 
             base.OnActionExecuted(filterContext);
         }
+
+        protected string SerializePartial(string partial, object model)
+        {
+            ViewData.Model = model;
+
+            string html;
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, partial);
+            ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+            viewResult.View.Render(viewContext, sw);
+
+            html = sw.GetStringBuilder().ToString();
+
+            return html;
+        }
+
     }
 }

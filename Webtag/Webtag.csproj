@@ -150,9 +150,9 @@
     <Compile Include="Migrations\201512211510162_InitialCreate.Designer.cs">
       <DependentUpon>201512211510162_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512280013073_AddLinks.cs" />
-    <Compile Include="Migrations\201512280013073_AddLinks.Designer.cs">
-      <DependentUpon>201512280013073_AddLinks.cs</DependentUpon>
+    <Compile Include="Migrations\201512281948418_AddLinks.cs" />
+    <Compile Include="Migrations\201512281948418_AddLinks.Designer.cs">
+      <DependentUpon>201512281948418_AddLinks.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Dashboard.cs" />
@@ -170,6 +170,8 @@
     <Content Include="images\favicon.ico" />
     <Content Include="images\logo.jpg" />
     <Content Include="js\jquery-2.1.4.js" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\webtag.js" />
     <Content Include="css\webtag.css" />
     <Content Include="Web.config" />
@@ -204,8 +206,8 @@
     <EmbeddedResource Include="Migrations\201512211510162_InitialCreate.resx">
       <DependentUpon>201512211510162_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512280013073_AddLinks.resx">
-      <DependentUpon>201512280013073_AddLinks.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512281948418_AddLinks.resx">
+      <DependentUpon>201512281948418_AddLinks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

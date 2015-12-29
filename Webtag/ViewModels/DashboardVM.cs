@@ -12,9 +12,11 @@ namespace Webtag.Models
 
     public class LinkVM
     {
-        public Link Link { get; set; }
-        public LinkFolder LinkFolder { get; set; }
-        public List<LinkVM> Links { get; set; }
+        public int LinkId { get; set; }
+        public string Title { get; set; }
+        public string Href { get; set; }
+        public bool IsParent { get; set; }
+        public List<LinkVM> ChildLinks { get; set; }
         public int Order { get; set; }
     }
 }

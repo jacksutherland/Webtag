@@ -18,19 +18,8 @@ namespace Webtag.Models
 
         public int Order { get; set; }
 
-        [ForeignKey("LinkFolder")]
-        public int? LinkFolderId { get; set; }
-        public virtual LinkFolder LinkFolder { get; set; }
-    }
+        public bool IsParent { get; set; }
 
-    public class LinkFolder
-    {
-        public int Id { get; set; }
-
-        public int UserProfileId { get; set; }
-
-        public string Text { get; set; }
-
-        public int Order { get; set; }
+        public int? LinkParentId { get; set; }
     }
 }
