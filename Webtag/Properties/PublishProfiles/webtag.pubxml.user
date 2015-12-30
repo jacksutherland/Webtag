@@ -71,7 +71,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/09/2013 12:05:12</publishTime>
     </File>
     <File Include="bin/Webtag.dll">
-      <publishTime>12/29/2015 12:45:20</publishTime>
+      <publishTime>12/29/2015 19:39:17</publishTime>
     </File>
     <File Include="css/bootstrap.css">
       <publishTime>12/19/2015 14:14:27</publishTime>
@@ -86,7 +86,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2015 15:49:26</publishTime>
     </File>
     <File Include="css/webtag.css">
-      <publishTime>12/29/2015 12:38:50</publishTime>
+      <publishTime>12/29/2015 19:41:19</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>12/19/2015 14:26:09</publishTime>
@@ -128,7 +128,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/28/2015 15:57:59</publishTime>
     </File>
     <File Include="js/webtag.js">
-      <publishTime>12/29/2015 12:32:38</publishTime>
+      <publishTime>12/29/2015 19:12:53</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>12/24/2015 17:19:57</publishTime>
@@ -146,7 +146,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/24/2015 17:12:58</publishTime>
     </File>
     <File Include="Views/Dashboard/Index.cshtml">
-      <publishTime>12/29/2015 12:43:09</publishTime>
+      <publishTime>12/29/2015 19:38:54</publishTime>
+    </File>
+    <File Include="Views/Dashboard/Widgets.cshtml">
+      <publishTime>12/29/2015 19:12:37</publishTime>
     </File>
     <File Include="Views/Dashboard/_Links.cshtml">
       <publishTime>12/29/2015 11:50:47</publishTime>
@@ -170,7 +173,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/19/2015 12:43:46</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/29/2015 12:44:54</publishTime>
+      <publishTime>12/29/2015 18:53:04</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>12/19/2015 12:43:46</publishTime>

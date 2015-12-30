@@ -4,7 +4,7 @@ namespace Webtag.Models
 {
     public enum WidgetType { Links = 1, Search = 2, Weather = 3 }
     public enum SearchType { None = 1, Google = 2, Bing = 3, Yahoo = 4 }
-    public enum WeatherType { None = 1, AccuWeather = 2 }
+    public enum WeatherType { None = 1, AccuWeather = 2, WillyWeather = 3 }
 
     public class Dashboard
     {

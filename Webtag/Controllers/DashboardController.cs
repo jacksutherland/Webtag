@@ -240,7 +240,8 @@ namespace Webtag.Controllers
                 WeatherTypes = new List<SelectListItem>()
                 {
                     new SelectListItem() { Text = "No Weather", Value = ((int)WeatherType.None).ToString(), Selected = weatherType == WeatherType.None },
-                    new SelectListItem() { Text = "AccuWeather", Value = ((int)WeatherType.AccuWeather).ToString(), Selected = weatherType == WeatherType.AccuWeather }
+                    new SelectListItem() { Text = "AccuWeather", Value = ((int)WeatherType.AccuWeather).ToString(), Selected = weatherType == WeatherType.AccuWeather },
+                    new SelectListItem() { Text = "Willy Weather", Value = ((int)WeatherType.WillyWeather).ToString(), Selected = weatherType == WeatherType.WillyWeather }
                 }
             };
 
