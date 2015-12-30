@@ -154,6 +154,10 @@
     <Compile Include="Migrations\201512281948418_AddLinks.Designer.cs">
       <DependentUpon>201512281948418_AddLinks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512292300373_AddWidgets.cs" />
+    <Compile Include="Migrations\201512292300373_AddWidgets.Designer.cs">
+      <DependentUpon>201512292300373_AddWidgets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\Link.cs" />
@@ -211,6 +215,9 @@
     <EmbeddedResource Include="Migrations\201512281948418_AddLinks.resx">
       <DependentUpon>201512281948418_AddLinks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512292300373_AddWidgets.resx">
+      <DependentUpon>201512292300373_AddWidgets.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Confirmation.cshtml" />
@@ -236,6 +243,7 @@
     <None Include="Properties\PublishProfiles\webtag.pubxml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\_Links.cshtml" />
+    <Content Include="Views\Dashboard\Widgets.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

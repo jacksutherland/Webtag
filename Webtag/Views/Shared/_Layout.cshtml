@@ -23,32 +23,30 @@
                         using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
                         {
                             @Html.AntiForgeryToken()
-                            <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
                         }
                     }
                     else
                     {
-                        @Html.ActionLink("Log in", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
+                        @Html.ActionLink("Log In", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
                     }
-                    @Html.ActionLink("About", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
+                    @Html.ActionLink("About MyWebTag", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
                     @if (Request.IsAuthenticated)
                     {
-                        <span>@ViewBag.UserName</span>
+                        @Html.ActionLink("Customize Dashboard", "Widgets", "Dashboard", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.AddWidget ? "selected" : "") })
+                        @Html.ActionLink("Dashboard", "/", "Dashboard", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Dashboard ? "selected" : "") })
                     }
                 </nav>
                 <button class="fa fa-bars pull-right margin-top visible-xs"></button>
             </div>
             <ul id="mobile-nav" class="display-none">
-                <li>
-                    @if (Request.IsAuthenticated)
-                    {
-                        <span>Welcome @ViewBag.UserName</span>
-                    }
-                </li>
-                <li>
-                    @Html.ActionLink("Dashboard", "/", "Home", "Dashboard")
-                </li>
-                <li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li>
+                        @Html.ActionLink("Dashboard", "/", "Home", "Dashboard")
+                    </li>
+                }
+            <li>
                     @Html.ActionLink("About", "About", "Home")
                 </li>
                 <li>
@@ -57,12 +55,12 @@
                         using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
                         {
                             @Html.AntiForgeryToken()
-                            <a href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
                         }
                     }
                     else
                     {
-                        @Html.ActionLink("Log in", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
+                        @Html.ActionLink("Log In", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
                     }
                 </li>
             </ul>

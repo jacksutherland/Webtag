@@ -25,7 +25,7 @@ namespace Webtag.Controllers
 
             if (ModelState.IsValid)
             {
-                if ( WebSecurity.Login(model.Email.Trim().ToLower(), model.Password.Trim()))
+                if (WebSecurity.Login(model.Email.Trim().ToLower(), model.Password.Trim()))
                 {
                     return RedirectToAction("/", "Dashboard");
                 }

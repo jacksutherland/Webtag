@@ -101,7 +101,7 @@ header nav
 header nav *
 {
     padding:7px 5px 6px 5px;
-    margin:0 0 0 15px;
+    margin:0 0 0 10px;
     display:block;
     float:right;
     border-bottom:solid 3px #fff;
@@ -178,7 +178,7 @@ header #mobile-nav li a
     width:100%;
 }
 
-input, textarea
+input, textarea, select
 {
     margin:13px 0 2px 0;
     padding: 6px;

@@ -48,11 +48,36 @@ namespace Webtag.Controllers
             return links.Any() ? links.Max(l => l.Order) + 1 : 0;
         }
 
+        private Dashboard GetOrCreateDashboard()
+        {
+            int userId = WebSecurity.CurrentUserId;
+
+            Dashboard dashboard = db.Dashboards.FirstOrDefault(d => d.UserProfileId == userId);
+            if(dashboard == null)
+            {
+                dashboard = db.Dashboards.Add(new Dashboard(userId));
+                db.SaveChanges();
+            }
+            return dashboard;
+        }
+
         public ActionResult Index()
         {
+            NavSelected = NavSection.Dashboard;
+
+            Dashboard dashboard = GetOrCreateDashboard();
+            IEnumerable<Widget> widgets = db.Widgets.Where(w => w.DashboardId == dashboard.Id);
+            Widget links = widgets.FirstOrDefault(w => w.Type == WidgetType.Links);
+            Widget search = widgets.FirstOrDefault(w => w.Type == WidgetType.Search);
+            Widget weather = widgets.FirstOrDefault(w => w.Type == WidgetType.Weather);
+
             DashboardVM model = new DashboardVM()
             {
-                Links = GetLinksVM()
+                Name = dashboard.Name,
+                Links = GetLinksVM(),
+                ShowLinks = links != null,
+                SearchType = search == null ? SearchType.None : (SearchType)search.ObjectId,
+                WeatherType = weather == null ? WeatherType.None : (WeatherType)weather.ObjectId,
             };
 
             return View(model);
@@ -177,5 +202,124 @@ namespace Webtag.Controllers
             }
         }
 
+        public ActionResult Widgets()
+        {
+            NavSelected = NavSection.AddWidget;
+
+            Dashboard dashboard = GetOrCreateDashboard();
+            IEnumerable<Widget> widgets = db.Widgets.Where(w => w.DashboardId == dashboard.Id);
+            
+            SearchType searchType = SearchType.None;
+            Widget search = widgets.FirstOrDefault(w => w.Type == WidgetType.Search);
+            if (search != null)
+            {
+                searchType = (SearchType)search.ObjectId;
+            }
+
+            WeatherType weatherType = WeatherType.None;
+            Widget weather = widgets.FirstOrDefault(w => w.Type == WidgetType.Weather);
+            if (weather != null)
+            {
+                weatherType = (WeatherType)weather.ObjectId;
+            }
+
+            AddWidgetVM model = new AddWidgetVM()
+            {
+                Dashboard = dashboard,
+                Widgets = widgets.ToList(),
+                ShowLinks = widgets.Where(w => w.Type == WidgetType.Links).Any(),
+                SearchType = searchType,
+                SearchTypes = new List<SelectListItem>()
+                {
+                    new SelectListItem() { Text = "No Search", Value = ((int)SearchType.None).ToString(), Selected = searchType == SearchType.None },
+                    new SelectListItem() { Text = "Google", Value = ((int)SearchType.Google).ToString(), Selected = searchType == SearchType.Google },
+                    new SelectListItem() { Text = "Bing", Value = ((int)SearchType.Bing).ToString(), Selected = searchType == SearchType.Bing },
+                    new SelectListItem() { Text = "Yahoo", Value = ((int)SearchType.Yahoo).ToString(), Selected = searchType == SearchType.Yahoo }
+                },
+                WeatherType = weatherType,
+                WeatherTypes = new List<SelectListItem>()
+                {
+                    new SelectListItem() { Text = "No Weather", Value = ((int)WeatherType.None).ToString(), Selected = weatherType == WeatherType.None },
+                    new SelectListItem() { Text = "AccuWeather", Value = ((int)WeatherType.AccuWeather).ToString(), Selected = weatherType == WeatherType.AccuWeather }
+                }
+            };
+
+            return View(model);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Widgets(AddWidgetVM model)
+        {
+            bool updated = false;
+            Dashboard dashboard = GetOrCreateDashboard();
+            Widget links = db.Widgets.FirstOrDefault(w => w.DashboardId == dashboard.Id && w.Type == WidgetType.Links);
+            Widget search = db.Widgets.FirstOrDefault(w => w.DashboardId == dashboard.Id && w.Type == WidgetType.Search);
+            Widget weather = db.Widgets.FirstOrDefault(w => w.DashboardId == dashboard.Id && w.Type == WidgetType.Weather);
+
+            /*** Links ***/
+
+            if(model.ShowLinks && links == null)
+            {
+                updated = true;
+                db.Widgets.Add(new Widget()
+                {
+                    DashboardId = dashboard.Id,
+                    Order = 1,
+                    Type = WidgetType.Links
+                });
+            }
+            else if(!model.ShowLinks && links != null)
+            {
+                updated = true;
+                db.Widgets.Remove(links);
+            }
+
+            /*** Search ***/
+
+            if(search == null)
+            {
+                updated = true;
+                search = db.Widgets.Add(new Widget()
+                {
+                    DashboardId = dashboard.Id,
+                    Order = 1,
+                    Type = WidgetType.Search,
+                    ObjectId = (int)model.SearchType
+                });
+            }
+            else if(search.ObjectId != (int)model.SearchType)
+            {
+                updated = true;
+                search.ObjectId = (int)model.SearchType;
+            }
+
+            /*** Weather ***/
+
+            if (weather == null)
+            {
+                updated = true;
+                weather = db.Widgets.Add(new Widget()
+                {
+                    DashboardId = dashboard.Id,
+                    Order = 1,
+                    Type = WidgetType.Weather,
+                    ObjectId = (int)model.WeatherType
+                });
+            }
+            else if (weather.ObjectId != (int)model.WeatherType)
+            {
+                updated = true;
+                weather.ObjectId = (int)model.WeatherType;
+            }
+
+            if(updated)
+            {
+                db.SaveChanges();
+            }
+
+
+            return RedirectToAction("/");
+        }
     }
 }

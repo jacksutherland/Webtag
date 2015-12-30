@@ -12,46 +12,93 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-6">
-        <div class="box">
 
-            <div class="clearfix">
-                <h2 class="pull-left">Links</h2>
-                <button class="pull-right fa fa-folder add-folder margin-top5"><span>New folder</span></button>
-                <button class="pull-right fa fa-link add-link margin-top5"><span>New link</span></button>
-                <button class="pull-right fa fa-sort-amount-asc reorder-links margin-top5 hidden-xs"><span>Reorder</span></button>
-            </div>
-            @*<div class="visible-xs clearfix">
-                <h2>Links</h2>
-                <div class="clearfix margin-bottom">
-                    <button class="pull-left fa fa-folder add-folder margin-left"><span>New folder</span></button>
-                    <button class="pull-left fa fa-link add-link margin-left"><span>New link</span></button>
-                    <button class="pull-left fa fa-sort-amount-asc reorder-links"><span>Reorder</span></button>
+        @if(Model.SearchType == SearchType.Google)
+        {
+            <div class="box">
+                <div class="text-center">
+                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" title="Google" style="height:45px" />
+                    <form action="http://www.google.com/search" target="_blank" method="get">
+                        <input name="q" type="text" class="full-width" />
+                        <button type="submit">Google Search</button>
+                    </form>
                 </div>
-            </div>*@
-            
-            <div id="link-inputs" class="margin-bottom display-none">
-                <input id="link-id" type="hidden" />
-                <input id="link-title" type="text" placeholder="Link title" class="full-width" />
-                <input id="link-url" type="text" placeholder="Link url" class="full-width" />
-                <div>
-                    <span id="link-url-validation" class="field-validation-error display-none" data-valmsg-for="Email" data-valmsg-replace="true">Url format must match http://www.myurl.com</span>
+            </div>
+        }
+        else if (Model.SearchType == SearchType.Bing)
+        {
+            <div class="box">
+                <div class="text-center">
+                    <img src="https://www.microsoft.com/maps/images/branding/Bing%20logo%20gray_150px-57px.png" title="Bing" style="height:40px" />
+                    <form action="http://www.bing.com/search" target="_blank" method="get">
+                        <input name="q" type="text" class="full-width" />
+                        <button type="submit">Search</button>
+                    </form>
                 </div>
-                <button id="save-link-button">Save</button>
-                <button id="cancel-link-button">Cancel</button>
             </div>
-            <div id="folder-inputs" class="margin-bottom display-none">
-                <input id="folder-id" type="hidden" />
-                <input id="folder-name" type="text" placeholder="Folder name" class="full-width" />
-                <button id="save-folder-button">Save</button>
-                <button id="cancel-folder-button">Cancel</button>
+        }
+        else if (Model.SearchType == SearchType.Yahoo)
+        {
+            <div class="box">
+                <div class="text-center">
+                    <img src="https://s.yimg.com/rz/l/yahoo_en-US_f_p_142x37.png" title="Yahoo" style="height:35px" />
+                    <form action="http://search.yahoo.com/search" target="_blank" method="get">
+                        <input name="p" type="text" class="full-width" />
+                        <button type="submit">Search Web</button>
+                    </form>
+                </div>
             </div>
-
-            <div id="link-list">
-                @Html.Partial("_Links", Model.Links)
+        }
+        
+        @if (Model.WeatherType == WeatherType.AccuWeather)
+        {
+            <div class="box">
+                <div style="height:423px; overflow:hidden;">
+                    <a href="http://www.accuweather.com/en/us/new-york-ny/10007/current-weather/349727" class="aw-widget-legal">
+                        <!--
+                        By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
+                        -->
+                    </a><div id="awtd1451434801452" class="aw-widget-36hour" data-locationkey="" data-unit="f" data-language="en-us" data-useip="true" data-uid="awtd1451434801452" data-editlocation="true"></div>
+                    <script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+                </div>
             </div>
-
-        </div>
+        }
+        
     </div>
+
     <div class="col-xs-12 col-sm-6">
+        @if (Model.ShowLinks)
+        {
+            <div class="box">
+                <div class="clearfix">
+                    <h2 class="pull-left">Links</h2>
+                    <button class="pull-right fa fa-folder add-folder margin-top5"><span>New folder</span></button>
+                    <button class="pull-right fa fa-link add-link margin-top5"><span>New link</span></button>
+                    <button class="pull-right fa fa-sort-amount-asc reorder-links margin-top5 hidden-xs"><span>Reorder</span></button>
+                </div>
+
+                <div id="link-inputs" class="margin-bottom display-none">
+                    <input id="link-id" type="hidden" />
+                    <input id="link-title" type="text" placeholder="Link title" class="full-width" />
+                    <input id="link-url" type="text" placeholder="Link url" class="full-width" />
+                    <div>
+                        <span id="link-url-validation" class="field-validation-error display-none" data-valmsg-for="Email" data-valmsg-replace="true">Url format must match http://www.myurl.com</span>
+                    </div>
+                    <button id="save-link-button">Save</button>
+                    <button id="cancel-link-button">Cancel</button>
+                </div>
+
+                <div id="folder-inputs" class="margin-bottom display-none">
+                    <input id="folder-id" type="hidden" />
+                    <input id="folder-name" type="text" placeholder="Folder name" class="full-width" />
+                    <button id="save-folder-button">Save</button>
+                    <button id="cancel-folder-button">Cancel</button>
+                </div>
+
+                <div id="link-list">
+                    @Html.Partial("_Links", Model.Links)
+                </div>
+            </div>
+        }
     </div>
 </div>
