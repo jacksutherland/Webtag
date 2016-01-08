@@ -1,11 +1,15 @@
 ﻿using System.Web.Mvc;
+using System.Linq;
 using WebMatrix.WebData;
+using Webtag.DataAccess;
 using Webtag.Models;
 
 namespace Webtag.Controllers
 {
     public class BaseController : Controller
     {
+        protected DataContext db = new DataContext();
+
         public NavSection NavSelected { get; set; }
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
@@ -34,5 +38,17 @@ namespace Webtag.Controllers
             return html;
         }
 
+        protected Dashboard GetOrCreateDashboard()
+        {
+            int userId = WebSecurity.CurrentUserId;
+
+            Dashboard dashboard = db.Dashboards.FirstOrDefault(d => d.UserProfileId == userId);
+            if (dashboard == null)
+            {
+                dashboard = db.Dashboards.Add(new Dashboard(userId));
+                db.SaveChanges();
+            }
+            return dashboard;
+        }
     }
 }

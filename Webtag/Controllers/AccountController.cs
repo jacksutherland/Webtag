@@ -14,7 +14,7 @@ namespace Webtag.Controllers
         public ActionResult Login()
         {
             NavSelected = NavSection.Login;
-            return View();
+            return View(new LoginVM() { RememberMe = true });
         }
 
         [HttpPost]
@@ -25,7 +25,7 @@ namespace Webtag.Controllers
 
             if (ModelState.IsValid)
             {
-                if (WebSecurity.Login(model.Email.Trim().ToLower(), model.Password.Trim()))
+                if (WebSecurity.Login(model.Email.Trim().ToLower(), model.Password.Trim(), persistCookie: model.RememberMe))
                 {
                     return RedirectToAction("/", "Dashboard");
                 }

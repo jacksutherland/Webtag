@@ -7,7 +7,7 @@ $(function ()
     });
 });
 
-var Dashboard = function (saveLinkUrl, saveFolderUrl, delLinkUrl, delFolderUrl, sortUrl)
+var Dashboard = function (saveLinkUrl, saveFolderUrl, delLinkUrl, delFolderUrl, sortUrl, delWidgetUrl)
 {
     var reordering = false;
     var orderingInited = false;
@@ -246,6 +246,30 @@ var Dashboard = function (saveLinkUrl, saveFolderUrl, delLinkUrl, delFolderUrl, 
         $("#link-title").focus();
     }
 
+    function addDeleteWidgetButtons()
+    {
+        $(".widget").prepend('<button class="delete-widget fa fa-times"></button>');
+        $(".delete-widget").click(function ()
+        {
+            var widget = $(this).parent(".widget");
+            var widgetType = widget.data("widget");
+            var isLinks = widgetType == 1;
+            var message = isLinks
+                ? "Are you sure you want to delete this widget, including all the links and folders you've added?"
+                : "Are you sure you want to delete this widget?";
+            if (confirm(message))
+            {
+                $.post(delWidgetUrl, { type: widgetType }, function (data)
+                {
+                    widget.slideUp("fast", function ()
+                    {
+                        widget.remove();
+                    });
+                });
+            }
+        });
+    }
+
     $(".add-link").click(function()
     {
         showLinkForm();
@@ -313,12 +337,22 @@ var Dashboard = function (saveLinkUrl, saveFolderUrl, delLinkUrl, delFolderUrl, 
     });
 
     updateLinks();
+    addDeleteWidgetButtons();
 }
 
-var AddWidgets = function(searchId, weatherId)
+//var AddWidgets = function(searchId, weatherId)
+var AddWidget = function ()
 {
-    $("#SearchType").val(searchId);
-    $("#WeatherType").val(weatherId);
+    $("#WidgetType").change(function ()
+    {
+        var widget = $(this).val();
+        $(".display-none").hide();
+        if(widget != "")
+        {
+            $("#save-button").show();
+            $('[data-widget="' + widget + '"]').show();
+        }
+    });
 }
 
 function isUrlValid(url)

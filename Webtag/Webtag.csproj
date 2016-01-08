@@ -142,6 +142,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="DataAccess\DataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -243,7 +244,7 @@
     <None Include="Properties\PublishProfiles\webtag.pubxml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\_Links.cshtml" />
-    <Content Include="Views\Dashboard\Widgets.cshtml" />
+    <Content Include="Views\Widgets\Add.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

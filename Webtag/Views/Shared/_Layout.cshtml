@@ -30,10 +30,10 @@
                     {
                         @Html.ActionLink("Log In", "Login", "Account", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Login ? "selected" : "") })
                     }
-                    @Html.ActionLink("About MyWebTag", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.About ? "selected" : "") })
                     @if (Request.IsAuthenticated)
                     {
-                        @Html.ActionLink("Customize Dashboard", "Widgets", "Dashboard", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.AddWidget ? "selected" : "") })
+                        @Html.ActionLink("Add Widget", "Add", "Widgets", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.AddWidget ? "selected" : "") })
                         @Html.ActionLink("Dashboard", "/", "Dashboard", null, new { @class = (ViewBag.NavSelected == Webtag.Models.NavSection.Dashboard ? "selected" : "") })
                     }
                 </nav>

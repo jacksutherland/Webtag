@@ -17,6 +17,10 @@
                 @Html.ValidationMessageFor(m => m.Password)
 
                 <div>
+                    <label>@Html.CheckBoxFor(m => m.RememberMe) Remember Me?</label>
+                </div>
+                
+                <div>
                     <button>Log in</button>
                     <span class="margin-left">OR @Html.ActionLink("Sign up now!", "Register")</span>
                 </div>

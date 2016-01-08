@@ -1,0 +1,47 @@
+﻿@using Webtag.Models
+@model AddWidgetVM
+
+@section scripts {
+    <script type="text/javascript">
+    $(function ()
+    {
+        //new AddWidgets("@((int)Model.SearchType)", "@((int)Model.WeatherType)");
+        new AddWidget();
+    });
+    </script>
+}
+
+@if(Model.WidgetTypes.Count() <= 1)
+{
+    <h2 class="margin-top text-center">Doh! There's nothing left to add. You've added them all!</h2>
+    <div class="text-center margin-top">
+        @Html.ActionLink("Return to dashboard", "/", "Dashboard", null, new { @class = "button" })
+    </div>
+}
+else
+{
+    using(Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+ 
+        <h2 class="margin-top">What type of widget do you want to add to your dashboard?</h2>
+
+        <div>
+            @Html.DropDownListFor(m => m.WidgetType, Model.WidgetTypes)
+        </div>
+
+        <div class="display-none margin-top" data-widget="@((int)WidgetType.Search)">
+            <h3>Select a search engine</h3>
+            @Html.DropDownListFor(m => m.SearchType, Model.SearchTypes)
+        </div>
+
+        <div class="display-none margin-top" data-widget="@((int)WidgetType.Weather)">
+            <h3>Select a weather module</h3>
+            @Html.DropDownListFor(m => m.WeatherType, Model.WeatherTypes)
+        </div>
+
+        <div class="display-none margin-top" id="save-button">
+            <button type="submit">Add widget</button>
+        </div>
+    }
+}

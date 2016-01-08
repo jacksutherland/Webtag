@@ -13,6 +13,7 @@ namespace Webtag.Models
         public SearchType SearchType { get; set; }
         public WeatherType WeatherType { get; set; }
         public bool ShowLinks { get; set; }
+        public bool HasWidgets { get; set; }
     }
 
     public class LinkVM
@@ -33,6 +34,8 @@ namespace Webtag.Models
         public List<SelectListItem> SearchTypes { get; set; }
         public WeatherType WeatherType { get; set; }
         public List<SelectListItem> WeatherTypes { get; set; }
+        public WidgetType WidgetType { get; set; }
+        public List<SelectListItem> WidgetTypes { get; set; }
         public List<Widget> Widgets { get; set; }
     }
 }
